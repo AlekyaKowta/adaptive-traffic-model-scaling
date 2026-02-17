@@ -1,5 +1,9 @@
 import matplotlib.pyplot as plt
 
+
+GW_BLUE = "#033C5A"
+GW_GOLD = "#FFC72C"
+
 # Model sizes
 models = ["Nano", "Small", "Medium", "Large"]
 
@@ -12,8 +16,8 @@ high_accuracy = [0.4152, 0.5297, 0.5581, 0.6073]
 plt.figure(figsize=(10, 6))
 
 # Plotting both lines for direct comparison
-plt.plot(models, low_accuracy, marker='o', label="Low Complexity (Simple)", color='blue', linewidth=2)
-plt.plot(models, high_accuracy, marker='o', label="High Complexity (Complex)", color='red', linewidth=2)
+plt.plot(models, low_accuracy, marker='o', label="Low Complexity (Simple)", color=GW_BLUE, linewidth=2)
+plt.plot(models, high_accuracy, marker='o', label="High Complexity (Complex)", color=GW_GOLD, linewidth=2)
 
 # Graph styling to match professional standards
 plt.xlabel("Model Size")
@@ -25,4 +29,5 @@ plt.legend()
 
 # Save the final image for the grant report
 plt.savefig("plot_results_new_dataset.png")
+plt.savefig("plot_results_new_dataset.pdf")
 plt.show()
