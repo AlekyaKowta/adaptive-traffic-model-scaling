@@ -21,3 +21,5 @@ skipcomp_figures/
 # Mac
 .DS_Store
 
+*.pt
+
