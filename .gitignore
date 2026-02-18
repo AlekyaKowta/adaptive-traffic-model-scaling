@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Envs
+venv/
+yolov6_env/
+
+# YOLO outputs
+runs/
+YOLOv6/
+
+# Datasets
+datasets/
+
+# Old figures
+figure_yolo/
+f1_tradeoff_figures/
+skipcomp_figures/
+
+# Mac
+.DS_Store
+

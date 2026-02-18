@@ -17,8 +17,11 @@ MODELS = [
     "yolo26l.pt"
 ]
 
-# COCO vehicle classes
-VEHICLE_CLASSES = ["car", "truck", "bus", "motorbike", "motorcycle"]
+# YOLO vehicle classes (COCO)
+YOLO_VEHICLE_CLASSES = ["car", "truck", "bus", "motorcycle"]
+
+# Ground truth vehicle labels (TrafficCAM)
+GT_VEHICLE_LABELS = ["Auto", "LCV", "LMV", "MotorBike", "Truck"]
 
 
 # -------------------------------
@@ -32,18 +35,29 @@ def evaluate_folder(model, folder_path):
 
     for file in os.listdir(folder_path):
         if file.endswith(".jpg"):
+
             image_path = os.path.join(folder_path, file)
             json_path = image_path.replace(".jpg", ".json")
 
             if not os.path.exists(json_path):
                 continue
 
-            # Ground truth count
+            # -------------------------------
+            # Ground Truth Vehicle Count
+            # -------------------------------
+
             with open(json_path, "r") as f:
                 data = json.load(f)
-                ground_truth = len(data["shapes"])
 
-            # Model prediction
+                ground_truth = 0
+                for shape in data["shapes"]:
+                    if shape["label"] in GT_VEHICLE_LABELS:
+                        ground_truth += 1
+
+            # -------------------------------
+            # YOLO Prediction
+            # -------------------------------
+
             start_time = time.time()
             results = model(image_path, verbose=False)
             inference_time = (time.time() - start_time) * 1000
@@ -52,10 +66,13 @@ def evaluate_folder(model, folder_path):
             predicted = 0
             for cls in results[0].boxes.cls:
                 class_name = model.names[int(cls)]
-                if class_name in VEHICLE_CLASSES:
+                if class_name in YOLO_VEHICLE_CLASSES:
                     predicted += 1
 
-            # Count-based accuracy
+            # -------------------------------
+            # Count-based Accuracy
+            # -------------------------------
+
             if max(predicted, ground_truth) > 0:
                 accuracy = min(predicted, ground_truth) / max(predicted, ground_truth)
             else:
@@ -74,7 +91,7 @@ def evaluate_folder(model, folder_path):
 # MAIN EVALUATION
 # -------------------------------
 
-print("\n=========== FINAL EVALUATION (120 vs 120) ===========\n")
+print("\n=========== FINAL VEHICLE-ONLY EVALUATION ===========\n")
 
 low_results = []
 high_results = []
