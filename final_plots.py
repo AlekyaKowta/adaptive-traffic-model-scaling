@@ -9,7 +9,7 @@ from ultralytics import YOLO
 # -------------------------------
 # CONFIGURATION
 # -------------------------------
-OUTPUT_DIR = "final_plots_alekya"
+OUTPUT_DIR = "final_plots_all_3"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 LOW_FOLDER = "TrafficCAM/raw/Complexity/Low_Complexity/Low_All"

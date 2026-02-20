@@ -29,12 +29,21 @@ TrafficCAM/raw/Complexity/
     ├── Low_Complexity/Low_All
     └── High_Complexity/High_All
 
+DAWNDataset/
+    ├── Low_Complexity/
+    └── High_Complexity/
+
+
 Files:
-- evaluate_folder.py  → Full evaluation script
-- plot_results.py     → Accuracy comparison plot
-- plot_gain.py        → Relative gain over Nano
-- plot_tradeoff.py    → Accuracy vs Inference time tradeoff
-- count_vehicles.py   → Basic vehicle counting utility
+- evaluate_folder.py        → Full evaluation script
+- plot_results.py           → Accuracy comparison plot
+- plot_gain.py              → Relative gain over Nano
+- plot_tradeoff.py          → Accuracy vs Inference time tradeoff
+- count_vehicles.py         → Basic vehicle counting utility
+- inference_new.py          → Inferences on DAWN Dataset
+- new_exp_plot_gain.py      → Relative gain over Nano
+- new_exp_plot_results.py   → Accuracy comparison plot
+- new_exp_plot_tradeoff.py  → Accuracy vs Inference time tradeoff
 
 ## How to Run
 
@@ -51,6 +60,42 @@ Generate plots:
 python plot_results.py
 python plot_gain.py
 python plot_tradeoff.py
+
+python new_exp_plot_results.py
+python new_exp_plot_gain.py
+python new_exp_plot_tradeoff.py
+
+# Final Plots
+
+## Setup & Intallation
+1. Create and activate a virtual environment:
+python3 -m venv venv
+source venv/bin/activate 
+
+2. Install dependencies:
+pip install -r alekya_requirements/requirements.txt
+
+## Running the Evaluation
+The final_plots.py script executes the full evaluation pipeline, including spatial IoU matching and dataset-level F1 calculation.  
+
+To generate 3 benchmark graphs:
+python3 final_plots.py
+
+## Methodology Alignment
+Our pipeline is synchronized to a unified research standard to ensure consistency across the lab:
+1. Spatial Matching: Uses Intersection over Union ($IoU \ge 0.5$) for True Positive validation.
+2. Filtering: Restricted to Vehicle-Only classes (Car, Truck, Bus, Auto, LCV, LMV, etc.).
+3. Inference Settings: Confidence threshold set to 0.25.Coordinate Systems: Automatically de-normalizes DAWN TXT coordinates to absolute pixels for spatial accuracy.
+
+## Result Data
+Model   |Low Complexity |High Traffic   |Bad Weather
+yolov8n |0.7093         |0.4020         |0.6298
+yolov8l |0.7836         |0.5384         |0.7417
+yolo26n |0.6756         |0.3648         |0.5567
+yolo26l |0.7710         |0.5342         |0.6811
+
+## Plots
+All three plots can be found in final_plots_all_3 folder.
 
 ## Summary
 
