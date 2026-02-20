@@ -23,3 +23,16 @@ skipcomp_figures/
 
 *.pt
 
+# Model weights
+*.pt
+
+# Datasets
+TrafficCAM/
+DAWNDataset/
+
+# Plots / outputs
+final_plots_alekya/
+runs/
+*.png
+*.pdf
+

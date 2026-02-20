@@ -8,6 +8,25 @@ import glob
 
 IOU_THRESHOLD = 0.5
 
+VEHICLE_CLASSES = [
+    "car", "truck", "bus", "motorcycle",
+    "motorbike", "vehicle", "auto", "lcv", "lmv"
+]
+
+# YOLO COCO class mapping (for v8 / v26 pretrained models)
+COCO_CLASS_NAMES = {
+    0: "person",
+    1: "bicycle",
+    2: "car",
+    3: "motorcycle",
+    4: "airplane",
+    5: "bus",
+    6: "train",
+    7: "truck",
+    8: "boat",
+    # remaining not needed for vehicle-only filtering
+}
+
 MODELS = [
     "26n_low", "26s_low", "26m_low", "26l_low",
     "26n_high", "26s_high", "26m_high", "26l_high",
@@ -17,7 +36,6 @@ MODELS = [
 
 LOW_GT_PATH = "TrafficCAM/raw/Complexity/Low_Complexity/Low_All"
 HIGH_GT_PATH = "TrafficCAM/raw/Complexity/High_Complexity/High_All"
-
 
 # ===============================
 # IOU FUNCTION
@@ -37,11 +55,11 @@ def compute_iou(box1, box2):
     area2 = (box2[2] - box2[0]) * (box2[3] - box2[1])
     union = area1 + area2 - intersection
 
-    return intersection / union if union > 0 else 0
+    return intersection / union if union > 0 else 0.0
 
 
 # ===============================
-# LOAD GROUND TRUTH
+# LOAD GROUND TRUTH (Vehicle-Only)
 # ===============================
 
 def load_ground_truth(gt_folder):
@@ -58,6 +76,11 @@ def load_ground_truth(gt_folder):
 
         boxes = []
         for shape in data["shapes"]:
+
+            label = shape["label"].lower()
+            if label not in VEHICLE_CLASSES:
+                continue  # Vehicle-only filtering
+
             points = shape["points"]
 
             xs = [p[0] for p in points]
@@ -77,7 +100,7 @@ def load_ground_truth(gt_folder):
 
 
 # ===============================
-# LOAD PREDICTIONS
+# LOAD PREDICTIONS (Vehicle-Only)
 # ===============================
 
 def load_predictions(pred_folder, gt_info):
@@ -102,6 +125,17 @@ def load_predictions(pred_folder, gt_info):
         for line in lines:
             parts = line.strip().split()
             if len(parts) < 5:
+                continue
+
+            class_id = int(parts[0])
+
+            # Only evaluate vehicle classes
+            if class_id not in COCO_CLASS_NAMES:
+                continue
+
+            class_name = COCO_CLASS_NAMES[class_id].lower()
+
+            if class_name not in VEHICLE_CLASSES:
                 continue
 
             xc = float(parts[1])
@@ -189,7 +223,6 @@ for model in MODELS:
 
     gt_boxes = load_ground_truth(gt_folder)
 
-    # Detect nested folder automatically
     nested_path = os.path.join("runs/detect/runs/detect/predictions", model)
     normal_path = os.path.join("runs/detect/predictions", model)
 
