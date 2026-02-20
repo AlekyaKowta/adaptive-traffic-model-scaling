@@ -26,17 +26,18 @@ Average inference time per image (ms) is also recorded.
 ## Repository Structure
 
 TrafficCAM/
-└── raw/
-    └── Complexity/
-        ├── Low_Complexity/
-        │   └── Low_All/
-        └── High_Complexity/
-            └── High_All/
+├── raw/
+│   └── Complexity/
+│       ├── Low_Complexity/
+│       │   └── Low_All/
+│       └── High_Complexity/
+│           └── High_All/
 
 DAWNDataset/
 └── Complexity/
     ├── Low_Complexity/
     └── High_Complexity/
+
 
 
 Files:
