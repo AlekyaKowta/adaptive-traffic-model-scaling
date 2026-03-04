@@ -1,0 +1,202 @@
+{
+    "Traffic_Clear": {
+        "yolov8n.pt": {
+            "f1_score": 0.7082,
+            "avg_inference_ms": 23.15,
+            "precision": 0.8229,
+            "recall": 0.6215
+        },
+        "yolov8s.pt": {
+            "f1_score": 0.7503,
+            "avg_inference_ms": 42.99,
+            "precision": 0.81,
+            "recall": 0.6987
+        },
+        "yolov8m.pt": {
+            "f1_score": 0.7888,
+            "avg_inference_ms": 89.81,
+            "precision": 0.8419,
+            "recall": 0.742
+        },
+        "yolov8l.pt": {
+            "f1_score": 0.7955,
+            "avg_inference_ms": 155.66,
+            "precision": 0.86,
+            "recall": 0.7401
+        },
+        "yolo26n.pt": {
+            "f1_score": 0.6748,
+            "avg_inference_ms": 24.58,
+            "precision": 0.8256,
+            "recall": 0.5706
+        },
+        "yolo26s.pt": {
+            "f1_score": 0.7655,
+            "avg_inference_ms": 43.32,
+            "precision": 0.8304,
+            "recall": 0.71
+        },
+        "yolo26m.pt": {
+            "f1_score": 0.8053,
+            "avg_inference_ms": 91.94,
+            "precision": 0.8123,
+            "recall": 0.7985
+        },
+        "yolo26l.pt": {
+            "f1_score": 0.8081,
+            "avg_inference_ms": 112.07,
+            "precision": 0.8323,
+            "recall": 0.7853
+        }
+    },
+    "Traffic_Rush": {
+        "yolov8n.pt": {
+            "f1_score": 0.5279,
+            "avg_inference_ms": 23.37,
+            "precision": 0.7054,
+            "recall": 0.4218
+        },
+        "yolov8s.pt": {
+            "f1_score": 0.5973,
+            "avg_inference_ms": 44.93,
+            "precision": 0.6636,
+            "recall": 0.5431
+        },
+        "yolov8m.pt": {
+            "f1_score": 0.6379,
+            "avg_inference_ms": 83.85,
+            "precision": 0.6775,
+            "recall": 0.6026
+        },
+        "yolov8l.pt": {
+            "f1_score": 0.6446,
+            "avg_inference_ms": 135.56,
+            "precision": 0.6582,
+            "recall": 0.6316
+        },
+        "yolo26n.pt": {
+            "f1_score": 0.5114,
+            "avg_inference_ms": 23.58,
+            "precision": 0.8439,
+            "recall": 0.3669
+        },
+        "yolo26s.pt": {
+            "f1_score": 0.5818,
+            "avg_inference_ms": 40.46,
+            "precision": 0.67,
+            "recall": 0.5141
+        },
+        "yolo26m.pt": {
+            "f1_score": 0.664,
+            "avg_inference_ms": 79.86,
+            "precision": 0.6926,
+            "recall": 0.6377
+        },
+        "yolo26l.pt": {
+            "f1_score": 0.6434,
+            "avg_inference_ms": 98.28,
+            "precision": 0.6694,
+            "recall": 0.6194
+        }
+    },
+    "Weather_Simple": {
+        "yolov8n.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 18.92,
+            "precision": 0.0,
+            "recall": 0
+        },
+        "yolov8s.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 36.89,
+            "precision": 0.0,
+            "recall": 0
+        },
+        "yolov8m.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 80.14,
+            "precision": 0.0,
+            "recall": 0
+        },
+        "yolov8l.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 148.0,
+            "precision": 0.0,
+            "recall": 0
+        },
+        "yolo26n.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 22.01,
+            "precision": 0.0,
+            "recall": 0
+        },
+        "yolo26s.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 38.84,
+            "precision": 0.0,
+            "recall": 0
+        },
+        "yolo26m.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 80.49,
+            "precision": 0.0,
+            "recall": 0
+        },
+        "yolo26l.pt": {
+            "f1_score": 0,
+            "avg_inference_ms": 98.21,
+            "precision": 0.0,
+            "recall": 0
+        }
+    },
+    "Weather_Extreme": {
+        "yolov8n.pt": {
+            "f1_score": 0.6298,
+            "avg_inference_ms": 20.87,
+            "precision": 0.8788,
+            "recall": 0.4907
+        },
+        "yolov8s.pt": {
+            "f1_score": 0.6944,
+            "avg_inference_ms": 40.43,
+            "precision": 0.868,
+            "recall": 0.5787
+        },
+        "yolov8m.pt": {
+            "f1_score": 0.7301,
+            "avg_inference_ms": 82.78,
+            "precision": 0.8565,
+            "recall": 0.6362
+        },
+        "yolov8l.pt": {
+            "f1_score": 0.7417,
+            "avg_inference_ms": 143.4,
+            "precision": 0.8794,
+            "recall": 0.6413
+        },
+        "yolo26n.pt": {
+            "f1_score": 0.5567,
+            "avg_inference_ms": 22.65,
+            "precision": 0.8617,
+            "recall": 0.4112
+        },
+        "yolo26s.pt": {
+            "f1_score": 0.6722,
+            "avg_inference_ms": 43.95,
+            "precision": 0.8602,
+            "recall": 0.5516
+        },
+        "yolo26m.pt": {
+            "f1_score": 0.6768,
+            "avg_inference_ms": 104.15,
+            "precision": 0.8473,
+            "recall": 0.5635
+        },
+        "yolo26l.pt": {
+            "f1_score": 0.6811,
+            "avg_inference_ms": 111.04,
+            "precision": 0.8688,
+            "recall": 0.5601
+        }
+    }
+}
